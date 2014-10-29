@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 target/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
 release.properties
+=======
+/bin/
+>>>>>>> 3593bf03665355de5961f175556d1618ab5d8835
