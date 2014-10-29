@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/template/bootstrap.xhtml">
+
+	<ui:define name="content">
+
+		<center>
+			<h:form>
+			
+			
+			<h:panelGrid columns="2" border="0">
+CIF
+<h:selectOneMenu value="#{viewAccountController.cifNo}">
+						<f:selectItems value="#{cIFController.ciflist}" var="cifList"
+							itemValue="#{cifList.cifNo}" itemLabel="#{cifList.cifNo}">
+						</f:selectItems>
+					</h:selectOneMenu>
+		Loan Account
+		<h:selectOneMenu value="#{viewAccountController.accountNo}">
+						<f:selectItems value="#{viewAccountController.loanAccounts}" var="loanAccount"
+							itemValue="#{loanAccount.accountNo}" itemLabel="#{loanAccount.accountNo}">
+						</f:selectItems>
+					</h:selectOneMenu>
+
+		Plafond
+		<h:inputText value="#{viewAccountController.loanAccounts}"   />
+		Tenure
+		<h:inputText value="#{viewAccountController.tenure}" />
+		Interest rate
+		<h:inputText value="#{viewAccountController.interestRate}" />
+		Interest type
+		<h:inputText value="#{viewAccountController.interestType}" />
+				</h:panelGrid>
+
+				<h:dataTable id="tableSimulate" var="las" value="#{viewAccountController.loanAccounts}"  border="4">
+					<h:column>
+						<f:facet name="header">Periode</f:facet>
+						<h:outputText value="#{las.period}" />
+					</h:column>
+<!-- 					<h:column> -->
+<!-- 						<f:facet name="header">Due Date</f:facet> -->
+<!-- 						<h:outputText value="#{loanAccountScheduleController.dueDate}" /> -->
+<!-- 					</h:column> -->
+					<h:column>
+						<f:facet name="header">Installment Balance</f:facet>
+						<h:outputText value="#{las.installmentBalance}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Interest</f:facet>
+						<h:outputText value="#{las.interest}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Principal</f:facet>
+						<h:outputText value="#{las.principal}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Installment</f:facet>
+						<h:outputText value="#{las.installment}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Outstanding</f:facet>
+						<h:outputText value="#{las.outstanding}" />
+					</h:column>
+				</h:dataTable>
+				<br />
+
+
+			</h:form>
+		</center>
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

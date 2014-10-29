@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<link href="/shop/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/shop/css/navbar.css" rel="stylesheet" />
+</head>
+<ui:composition template="/template/bootstrap.xhtml">
+
+	<ui:define name="content">
+
+		<center>
+			<h:form>
+
+
+				<h:panelGrid columns="2" border="0">
+CIF
+<h:selectOneMenu value="#{loanAccountController.cifNo}">
+						<f:selectItems value="#{cIFController.ciflist}" var="cifList"
+							itemValue="#{cifList.cifNo}" itemLabel="#{cifList.cifNo}">
+						</f:selectItems>
+					</h:selectOneMenu>
+		Account No.
+		<h:inputText value="#{loanAccountController.accountNo}" />
+		Plafond
+		<h:inputText value="#{loanAccountController.plafond}" />
+		Tenure
+		<h:inputText value="#{loanAccountController.tenure}" />
+		Interest rate
+		<h:inputText value="#{loanAccountController.interestRate}" />
+		Interest type
+		<h:selectOneMenu value="#{loanAccountController.interestType}">
+						<f:selectItem itemValue="F" itemLabel="Flat" />
+						<f:selectItem itemValue="E" itemLabel="Efektif" />
+						<f:selectItem itemValue="A" itemLabel="Anuitas" />
+					</h:selectOneMenu>
+				</h:panelGrid>
+
+				<h:commandButton value="Simulate"> 
+					<f:ajax execute="@form" listener="#{loanAccountController.simulate}" render="tableSimulate"></f:ajax>
+				</h:commandButton>
+				<br />
+				<br />
+
+				<h:dataTable id="tableSimulate" var="las" value="#{loanAccountController.loanAccounts}"  border="4">
+					<h:column>
+						<f:facet name="header">Periode</f:facet>
+						<h:outputText value="#{las.period}" />
+					</h:column>
+<!-- 					<h:column> -->
+<!-- 						<f:facet name="header">Due Date</f:facet> -->
+<!-- 						<h:outputText value="#{loanAccountScheduleController.dueDate}" /> -->
+<!-- 					</h:column> -->
+					<h:column>
+						<f:facet name="header">Installment Balance</f:facet>
+						<h:outputText value="#{las.installmentBalance}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Interest</f:facet>
+						<h:outputText value="#{las.interest}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Principal</f:facet>
+						<h:outputText value="#{las.principal}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Installment</f:facet>
+						<h:outputText value="#{las.installment}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Outstanding</f:facet>
+						<h:outputText value="#{las.outstanding}" />
+					</h:column>
+				</h:dataTable>
+				<br />
+				<h:commandButton action="#{loanAccountController.save}" value="Save" />
+			</h:form>
+		</center>
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/template/menucifbootstrap.xhtml">
+
+	<ui:define name="content">
+		<center>
+			<h:form>
+				<h:messages />
+
+				<h:dataTable var="l" value="#{cIFController.ciflist}">
+					<h:column>
+						<f:facet name="header">No. CIF</f:facet>
+						<h:outputText value="#{l.cifNo}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nama Depan</f:facet>
+						<h:outputText value="#{l.firstName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nama Belakang</f:facet>
+						<h:outputText value="#{l.lastName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Email</f:facet>
+						<h:outputText value="#{l.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Tanggal Lahir</f:facet>
+						<h:outputText value="#{l.birthDate}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nama Orang Tua</f:facet>
+						<h:outputText value="#{l.motherMaidenName}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nomor ID</f:facet>
+						<h:outputText value="#{l.idNumber}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">Tipe ID</f:facet>
+						<h:outputText value="#{l.idType}" />
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</center>
+
+	</ui:define>
+
+</ui:composition>
+</html>

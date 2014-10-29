@@ -1,0 +1,39 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template/bootstrap.xhtml">
+
+	<ui:define name="content">
+		<center>
+			<h:form>
+				<h:messages />
+
+				<h:panelGrid columns="2" border="0">
+					<center>No. Akun</center>
+					<h:selectOneMenu value="#{paymentController.acountNo}">
+						<f:selectItems value="#{paymentController.loanAccounts}" var="loanAccount"
+							itemValue="#{loanAccount.accountNo}" itemLabel="#{loanAccount.accountNo}">
+						</f:selectItems>
+					</h:selectOneMenu>
+<!-- 					<h:inputText value="#{paymentController.acountNo}" required="true"  label="No. akun"/> -->
+					<br />
+					<center>Jumlah</center>
+					<h:inputText value="#{paymentController.amount}" required="true"  label="Jumlah"/>
+					<br />
+					<!-- 					<center>Status Pembayaran</center> -->
+					<!-- 										<h:inputText value="N" required="true"  label="Status Pembayaran"/> -->
+					<br />
+				</h:panelGrid>
+
+				<h:commandButton action="#{paymentController.save}" value="Submit" />
+
+			</h:form>
+		</center>
+	</ui:define>
+
+</ui:composition>
+</html>
